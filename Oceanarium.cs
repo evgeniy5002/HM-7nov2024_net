@@ -2,25 +2,20 @@ using System.Collections;
 
 namespace HW
 {
-    class Oceanarium<T> : IEnumerable where T : Animal
+    public class Oceanarium<T> where T : IEnumerable
     {
-        public List<T> _animals;
+        public T _animals;
 
-        public Oceanarium()
+        public Oceanarium(T collection)
         {
-            _animals = new List<T>();
+            _animals = collection;
         }
 
-        public void Add(T animal)
+        public void Print()
         {
-            _animals?.Add(animal);
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            for (int i = 0; i < _animals.Count; i++)
+            foreach (var animal in _animals)
             {
-                yield return _animals[i];
+                Console.WriteLine(animal.ToString());
             }
         }
     }

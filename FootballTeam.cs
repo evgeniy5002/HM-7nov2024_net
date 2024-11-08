@@ -2,25 +2,20 @@ using System.Collections;
 
 namespace HW
 {
-    class FootballTeam<T> : IEnumerable where T : Player
+    class FootballTeam<T> where T : IEnumerable
     {
-        public List<T> _players;
+        public T _players;
 
-        public FootballTeam()
+        public FootballTeam(T collection)
         {
-            _players = new List<T>();
+            _players = collection;
         }
 
-        public void Add(T player)
+        public void Print()
         {
-            _players.Add(player);
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            for (int i = 0; i < _players.Count; i++)
+            foreach (var player in _players)
             {
-                yield return _players[i];
+                Console.WriteLine(player.ToString());
             }
         }
     }

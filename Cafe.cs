@@ -2,25 +2,20 @@ using System.Collections;
 
 namespace HW
 {
-    public class Cafe<T> : IEnumerable  where T : Worker
+    class Cafe<T> where T : IEnumerable
     {
-        private List<T> _workers;
+        public T _workers;
 
-        public Cafe()
+        public Cafe(T collection)
         {
-            _workers = new List<T>();
+            _workers = collection;
         }
 
-        public void Add(T worker)
+        public void Print()
         {
-            _workers.Add(worker);
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            for (int i = 0; i < _workers.Count; i++)
+            foreach (var worker in _workers)
             {
-                yield return _workers[i];
+                Console.WriteLine(worker.ToString());
             }
         }
     }
